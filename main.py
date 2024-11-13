@@ -11,8 +11,3 @@ def score():
         return render_template('index.html', score=score)
     except Exception as e:
         return render_template('error.html', error=e)
-
-
-# welcome()
-# start_play()
-

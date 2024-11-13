@@ -1,5 +1,6 @@
 import random
 import requests
+import PyCurrency_Converter
 
 api_key = "82bd1879c317e22c06abfb72"
 
