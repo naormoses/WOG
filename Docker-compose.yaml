@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  flask-app:
+    build:
+     context: .
+     dockerfile: Dockerfile
+    ports:
+     - "5000:5000"
+    volumes:
+     - .:/app 
+    command: ["flask", "run"]
+
+
+  selenium:
+    image: selenium/standalone-chrome
+    container_name: selenium
+    ports:
+      - "4444:4444"

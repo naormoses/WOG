@@ -1,0 +1,4 @@
+pipline{
+    agent any
+    
+}
