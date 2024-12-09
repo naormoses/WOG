@@ -2,18 +2,8 @@ version: "3.8"
 
 services:
   flask-app:
-    build:
-     context: .
-     dockerfile: Dockerfile
+    image: wog-flask-app:1.0
+    working_dir: /app
     ports:
      - "5000:5000"
-    volumes:
-     - .:/app 
-    command: ["flask", "run"]
-
-
-  selenium:
-    image: selenium/standalone-chrome
-    container_name: selenium
-    ports:
-      - "4444:4444"
+    command: ["flask", "--app", "main.py", "run", "--host=0.0.0.0"]
