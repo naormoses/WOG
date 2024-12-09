@@ -21,7 +21,7 @@ pipeline {
         stage('test') {
             steps {
                 script {
-                    sh("docker run -d -p 5000:5000 wog-flask-apps:${env.BUILD_NUMBER}")
+                    sh("docker run -d -p 5000:5000 naorj/wog-flask-apps:${env.BUILD_NUMBER}")
                     sh("pip3 install selenium && python3 e2e.py http://host.docker.internal:5000/score")
                 }
             }
