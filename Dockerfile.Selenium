@@ -1,0 +1,9 @@
+FROM python:3.12-slim
+
+ENV URL=""
+
+RUN pip install selenium
+
+COPY e2e.py .
+
+CMD ["python", "e2e.py", "${URL}"]
