@@ -10,19 +10,12 @@ pipeline {
             }
         }
 
-        stage('scan image') {
-            steps {
-                script {
-                    sh("docker images")
-                }
-            }
-        }
-
         stage('test') {
             steps {
                 script {
                     sh("docker run -d -p 5000:5000 naorj/wog-flask-apps:${env.BUILD_NUMBER}")
-                    sh("pip3 install selenium && python3 e2e.py http://host.docker.internal:5000/score")
+                    sh("python3 -m venv venv && source venv/bin/activate && pip3 install selenium")
+                    sh("source venv/bin/activate && python3 e2e.py http://host.docker.internal:5000/score")
                 }
             }
         }
@@ -38,11 +31,13 @@ pipeline {
             }   
         }
     }
-
-    // post {
-    //     always {}
-    //     success{}
-    //     failure{}
-    //     unstable{}
-    // }
 }
+
+// SCM
+// test
+// COMPILE X
+// BUILD image V
+// integration tests V
+// PUBLISH V
+// DEPLOY X
+// POST
