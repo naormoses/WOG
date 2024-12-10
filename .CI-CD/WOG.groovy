@@ -23,7 +23,7 @@ pipeline {
                 script {
                     withCredentials([usernamePassword(credentialsId: 'DockerHubCreds', passwordVariable: 'pass', usernameVariable: 'user')]) {
                         sh("docker login -u ${user} -p ${pass}")
-                        sh("docker push naorj/wog-flask-app:${env.BUILD_NUMBER}")
+                        sh("docker push naorj/wog-flask-apps:${env.BUILD_NUMBER}")
                     }
                 }
             }   
